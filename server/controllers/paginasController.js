@@ -29,7 +29,7 @@ const paginaInicio = async (req, res) => {
 const paginaNosotros = (req, res) => {
      const viajes = 'Viaje a Alemania';
 
-     res.render('Nosotros', {
+     res.render('../server/views/Nosotros', {
           pagina: 'Nosotros'
      });
 };
