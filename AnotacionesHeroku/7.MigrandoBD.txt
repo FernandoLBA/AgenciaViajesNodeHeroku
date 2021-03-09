@@ -64,7 +64,7 @@ Si le damos open app, aparecerá un error:
 Reinstalé el npm:
 npm install
 Instalé el dotenv en producción:
-
+npm install --save dotenv
 ================================================================
 
 
