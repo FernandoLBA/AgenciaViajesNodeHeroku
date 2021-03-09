@@ -1,0 +1,16 @@
+1) Creas la cuenta, inicias sesión y registras una tarjeta de crédito o débito en Heroku para tener lista nuestra cuenta para subir una app.
+
+2) Luego vamos a instalar el CLI de Heroku:
+npm i -g Heroku
+
+tipeamos heroku en consola y debe aparecer un montón de comandos, sino aparecen, desinstalar el heroku con este comando:
+npm uninstall -g heroku-CLI
+y volver a instalar con el comando de arriba.
+
+3) Luego vamos a crear nuestra primera app en HEROKU:
+heroku create --remote production
+Aparecerá un enlace y el nombre de la app creada en heroku.
+En la web de heroku veremos nuestra app creada con el mismo nombre que el que nos apareció en consola.
+
+4) Luego vamos a subir nuestro proyecto a Heroku, usando el comando:
+git push production master
