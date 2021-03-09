@@ -1,0 +1,21 @@
+Para que el proyecto funcione, es necesario realizar estos pasos.
+
+1) Crear una carpeta server en la raíz y colocar dentro las siguientes carpetas:
+-config
+-models
+-controllers-
+-views
+-routes
+
+2) Crear un archivo .gitignore en la raiz del proyecto, y agregar lo que no hace falta subir al servidor, como por ejemplo:
+Anotaciones
+node_modules
+variables.env
+Así cuando hagamos push a github y a heroku no se suban esas carpetas, ya que no son necesarias.
+
+3) Abrir paginasControllers.js y arreglar las rutas a las vistas:
+Inicio > ../server/views/Inicio
+Nosotros > ../server/views/Nosotros
+Viajes > ../server/views/Viajes
+Testimoniales > ../server/views/Testimoniales
+Viaje > ../server/views/viaje
