@@ -10,16 +10,16 @@ import {guardarTestimonial} from '../controllers/testimonialController.js';
 
 const router = express.Router();
 
-router.get('../server/views/', paginaInicio);
+router.get('/', paginaInicio);
 
-router.get('../server/views/nosotros', paginaNosotros);
+router.get('/nosotros', paginaNosotros);
 
-router.get('../server/views/viajes', paginaViajes);
+router.get('/viajes', paginaViajes);
 
-router.get('../server/views/viajes/:slug', paginaDetalleViaje);
+router.get('/viajes/:slug', paginaDetalleViaje);
 
-router.get('../server/views/testimoniales', paginaTestimoniales);
+router.get('/testimoniales', paginaTestimoniales);
 
-router.post('../server/views/testimoniales', guardarTestimonial);
+router.post('/testimoniales', guardarTestimonial);
 
 export default router;

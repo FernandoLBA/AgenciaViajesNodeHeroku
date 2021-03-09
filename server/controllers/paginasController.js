@@ -15,7 +15,7 @@ const paginaInicio = async (req, res) => {
           // cargará los resultados cuando ambas consultas estén listas
           const resultado = await Promise.all(promiseDB);
 
-          res.render('../server/views/inicio', {
+          res.render('inicio', {
                pagina: 'Inicio',
                clase: 'home',
                viajes: resultado[0],
@@ -29,7 +29,7 @@ const paginaInicio = async (req, res) => {
 const paginaNosotros = (req, res) => {
      const viajes = 'Viaje a Alemania';
 
-     res.render('../server/views/Nosotros', {
+     res.render('Nosotros', {
           pagina: 'Nosotros'
      });
 };
@@ -38,7 +38,7 @@ const paginaViajes = async (req, res) => {
      // Consultar base de datos
      const viajes = await Viaje.findAll();
 
-     res.render('../server/views/Viajes', {
+     res.render('Viajes', {
           pagina: 'Próximos Viajes',
           viajes
      });
@@ -49,7 +49,7 @@ const paginaTestimoniales = async (req, res) => {
      try {
           const testimoniales = await Testimonial.findAll();
 
-          res.render('../server/views/Testimoniales', {
+          res.render('Testimoniales', {
                pagina: 'Testimoniales',
                testimoniales
           });
@@ -66,7 +66,7 @@ const paginaDetalleViaje = async (req, res) => {
      try {
           const viaje = await Viaje.findOne({ where: { slug }});  
           
-          res.render('../server/views/Viaje', {
+          res.render('Viaje', {
                pagina: 'Viaje',
                viaje
           });     
