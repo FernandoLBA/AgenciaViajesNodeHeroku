@@ -14,3 +14,6 @@ En la web de heroku veremos nuestra app creada con el mismo nombre que el que no
 
 4) Luego vamos a subir nuestro proyecto a Heroku, usando el comando:
 git push production master
+Esto subirá el proyecto al servidor
+
+5) AL subir el proyecto, abrimos la web. le damos click en la app y aparecerá un botón arriba a la derecha llamado open app, le damos click, aparecerá un error, este error aparece porque las variables de entorno aún no existen en el servidor, hay que crearlas.

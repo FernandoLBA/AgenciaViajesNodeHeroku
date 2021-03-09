@@ -1,0 +1,64 @@
+Migrando base de datos mysql a heroku
+
+1) Abrimos la web de heroku, luego en el menú superior dar click en resources, en add ons buscar mysql, seleccionamos la opción cleardb mysql.
+Para el siguiente paso deben tener registrada la tarjeta de crédito o débito, sino les dará error.
+Presionamos submit order form. Y se agregará a nuestro proyecto.
+
+2) Ahora vamos a crear las variables de entorno en el servidor, con el mismo nombre que teníamos en el archivo variables.env.
+Dar click en settings, luego en el botón reveal config vars, alli nos aparecerán 2 campos, el de la izquierda es el nombre de la variable de entorno y el de la derecha es el valor de esa variable de entorno.
+Aparece la variable con el nombre: CLEARDB_DATABASE_URL
+y a su lado un enlace, ese enlace tiene los valores que le asignaremos a nuestras variables de entorno.
+
+3) El enlace que aparece NO ES IGUAL PARA TODOS, luce como este y se divide en varias partes:
+mysql://b4d22bd8ac9865:bb654f47@us-cdbr-east-03.cleardb.com/heroku_7c9afeee53888b6?reconnect=true
+
+                USUARIO            PASSWORD              
+mysql:// -> b4d22bd8ac9865 <- : -> bb654f47 <- @ 
+              HOST
+-> us-cdbr-east-03.cleardb.com <- 
+        NOMBRE DE BD
+/ -> heroku_7c9afeee53888b6 <- ?reconnect=true
+
+Asignamos a las variables de entorno, los valores de la url
+BD_NOMBRE=heroku_7c9afeee53888b6
+BD_USER=b4d22bd8ac9865
+BD_PASS=bb654f47
+BD_HOST=us-cdbr-east-03.cleardb.com
+
+4) Ahora necesitamos subir nuestra base de datos agenciaviajes al servidor, para eso, hay que exportarla en un archivo.sql, tipeamos el siguiente código:
+mysqldump -u root -p agenciaviajes > agenciaviajes.sql
+
+El archivo se generará en la carpeta del proyecto, si ejecutaste la consola desde la carpeta del proyecto.
+
+5) Ahora solicitamos el enlace con el siguiente comando:
+heroku config | grep CLEARDB_DATABASE_URL
+
+Nos mostrará la misma url que obtuvimos arriba.
+
+6) Luego colocamos los valores del enlace en consola como se muestra(usuario, hosting, paswword vacía y nombre de bd < basedatos.sql):
+mysql -u b4d22bd8ac9865 -h us-cdbr-east-03.cleardb.com -p heroku_7c9afeee53888b6 < agenciaviajes.sql
+
+Nos pedirá el password, le colocamos el que nos dió el enlace de heroku.
+No aparece mensaje de confirmación sin embargo mientras no aparezca un error, asumimos que se subió la base de datos al servidor.
+
+7) Podemos crear las variables de entorno en Heroku, desde consola:
+heroku config:set BD_NOMBRE=heroku_7c9afeee53888b6
+
+Luego si revisamos la web. en setting, reveal config vars, aparecerá la variable de entorno.
+
+Otra forma es directo en la web de Heroku, le damos click en Add, escribimos el nombre de la variable de entorno (Tal cual como estaba en variables.env) y le asignamos el valor del enlace que nos dió heroku y la variable BD_PORT=3306.
+
+Si le damos open app, aparecerá un error:
+2021-03-09T20:40:09.253976+00:00 app[web.1]: npm ERR! 
+2021-03-09T20:40:09.254130+00:00 app[web.1]: npm ERR! Failed at the agenciaviajesnodeheroku@1.0.0 start script.
+2021-03-09T20:40:09.254272+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2021-03-09T20:40:09.270455+00:00 app[web.1]: 
+2021-03-09T20:40:09.270458+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2021-03-09T20:40:09.270458+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2021-03-09T20_40_09_255Z-debug.log
+2021-03-09T20:40:09.358182+00:00 heroku[web.1]: Process exited with status 1
+2021-03-09T20:40:09.453122+00:00 heroku[web.1]: State changed from starting to crashed
+2021-03-09T20:41:02.156200+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=secure-plateau-81674.herokuapp.com request_id=19401cd0-2d5b-4a3f-86a1-e7519779641d fwd="179.6.214.4" dyno= connect= service= status=503 bytes= protocol=https
+2021-03-09T20:41:02.803557+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=secure-plateau-81674.herokuapp.com request_id=759caf8d-cccf-4f7d-a055-524c1ca97b52 fwd="179.6.214.4" dyno= connect= service= status=503 bytes= protocol=https
+
+
+
