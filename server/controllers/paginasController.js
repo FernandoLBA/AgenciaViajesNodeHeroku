@@ -27,7 +27,7 @@ const paginaInicio = async (req, res) => {
 };
 
 const paginaNosotros = (req, res) => {
-     res.render('../server/views/Nosotros', {
+     res.render('../server/views/nosotros', {
           pagina: 'Nosotros'
      });
 };
@@ -36,7 +36,7 @@ const paginaViajes = async (req, res) => {
      // Consultar base de datos
      const viajes = await Viaje.findAll();
 
-     res.render('../server/views/Viajes', {
+     res.render('../server/views/viajes', {
           pagina: 'Próximos Viajes',
           viajes
      });
@@ -47,7 +47,7 @@ const paginaTestimoniales = async (req, res) => {
      try {
           const testimoniales = await Testimonial.findAll();
 
-          res.render('../server/views/Testimoniales', {
+          res.render('../server/views/testimoniales', {
                pagina: 'Testimoniales',
                testimoniales
           });
@@ -63,7 +63,7 @@ const paginaDetalleViaje = async (req, res) => {
 
      try {
           const viaje = await Viaje.findOne({ where: { slug }});  
-          res.render('../server/views/Viaje', {
+          res.render('../server/views/viaje', {
                pagina: 'Viaje',
                viaje
           });     

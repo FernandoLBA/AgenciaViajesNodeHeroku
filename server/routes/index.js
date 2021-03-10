@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get('/', paginaInicio);
 
-router.get('../server/views/nosotros', paginaNosotros);
+router.get('/nosotros', paginaNosotros);
 
 router.get('/viajes', paginaViajes);
 
