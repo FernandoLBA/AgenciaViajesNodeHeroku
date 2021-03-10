@@ -12,7 +12,7 @@ const paginaInicio = async (req, res) => {
      promiseDB.push(Testimonial.findAll({ limit: 3 }));
 
      try {
-          // cargará los resultados cuando ambas consultas estén listas
+          // Cargará los resultados cuando ambas consultas estén listas
           const resultado = await Promise.all(promiseDB);
 
           res.render('../server/views/inicio', {
@@ -27,8 +27,6 @@ const paginaInicio = async (req, res) => {
 };
 
 const paginaNosotros = (req, res) => {
-     const viajes = 'Viaje a Alemania';
-
      res.render('../server/views/Nosotros', {
           pagina: 'Nosotros'
      });
@@ -65,7 +63,6 @@ const paginaDetalleViaje = async (req, res) => {
 
      try {
           const viaje = await Viaje.findOne({ where: { slug }});  
-          
           res.render('../server/views/Viaje', {
                pagina: 'Viaje',
                viaje
