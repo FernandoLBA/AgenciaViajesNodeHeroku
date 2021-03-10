@@ -95,3 +95,6 @@ npm install --save dotenv
 
 Y listo, funcionando perfectamente.
 https://secure-plateau-81674.herokuapp.com/
+
+A veces es necesario reiniciar todos los dynos en el server Heroku para que funcione la página.
+Esto se hace en el botón more del menú superior derecho, luego click en restart all dynos.
