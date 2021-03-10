@@ -1,6 +1,6 @@
 # PROYECTO AGENCIA DE VIAJES NODE
 
-# RECURSOS
+# Recursos
 -Node.Js
 -Express
 -Sequelize
