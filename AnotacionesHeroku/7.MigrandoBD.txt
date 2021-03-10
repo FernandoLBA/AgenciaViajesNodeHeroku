@@ -10,18 +10,18 @@ Aparece la variable con el nombre: CLEARDB_DATABASE_URL
 y a su lado un enlace, ese enlace tiene los valores que le asignaremos a nuestras variables de entorno.
 
 3) El enlace que aparece NO ES IGUAL PARA TODOS, luce como este y se divide en varias partes:
-mysql://b4d22bd8ac9865:bb654f47@us-cdbr-east-03.cleardb.com/heroku_7c9afeee53888b6?reconnect=true
+mysql://b4d22bd8ac:bb654f47@us-cdbr-east-03.cleardb.com/heroku_7c9afeee?reconnect=true
 
-                USUARIO            PASSWORD              
-mysql:// -> b4d22bd8ac9865 <- : -> bb654f47 <- @ 
+             USUARIO           PASSWORD      
+mysql:// -> b4d22bd8ac <- : -> bb654f47 <- @ 
               HOST
 -> us-cdbr-east-03.cleardb.com <- 
         NOMBRE DE BD
-/ -> heroku_7c9afeee53888b6 <- ?reconnect=true
+/ -> heroku_7c9afeee <- ?reconnect=true
 
 Asignamos a las variables de entorno, los valores de la url
-BD_NOMBRE=heroku_7c9afeee53888b6
-BD_USER=b4d22bd8ac9865
+BD_NOMBRE=heroku_7c9afeee
+BD_USER=b4d22bd8ac
 BD_PASS=bb654f47
 BD_HOST=us-cdbr-east-03.cleardb.com
 
@@ -36,13 +36,13 @@ heroku config | grep CLEARDB_DATABASE_URL
 Nos mostrará la misma url que obtuvimos arriba.
 
 6) Luego colocamos los valores del enlace en consola como se muestra(usuario, hosting, paswword vacía y nombre de bd < basedatos.sql):
-mysql -u b4d22bd8ac9865 -h us-cdbr-east-03.cleardb.com -p heroku_7c9afeee53888b6 < agenciaviajes.sql
+mysql -u b4d22bd8ac -h us-cdbr-east-03.cleardb.com -p heroku_7c9afeee < agenciaviajes.sql
 
 Nos pedirá el password, le colocamos el que nos dió el enlace de heroku.
 No aparece mensaje de confirmación sin embargo mientras no aparezca un error, asumimos que se subió la base de datos al servidor.
 
 7) Podemos crear las variables de entorno en Heroku, desde consola:
-heroku config:set BD_NOMBRE=heroku_7c9afeee53888b6
+heroku config:set BD_NOMBRE=heroku_7c9afeee
 
 Luego si revisamos la web. en setting, reveal config vars, aparecerá la variable de entorno.
 
