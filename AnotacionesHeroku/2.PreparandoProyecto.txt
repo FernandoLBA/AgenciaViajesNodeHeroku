@@ -1,13 +1,17 @@
 Preparando el proyecto para el deployment
 
-1) Estaremos utilizando Heroku, para este deployment, es necesario crear una cuenta, iniciar sesión y afiliar un método de pago, como una tarjeta de crédito o débito, no cobrarán nada.
+1) Estaremos utilizando Heroku, para este deployment, es necesario crear una cuenta,
+iniciar sesión y afiliar un método de pago, como una tarjeta de crédito o débito, 
+no cobrarán nada.
 
-2) ingresamos a la carpeta del proyecto, e instalamos para desarrollo la dependencia dotenv
+2) ingresamos a la carpeta del proyecto, e instalamos para desarrollo la dependencia 
+dotenv:
 npm install --save-dev dotenv
 Esta dependencia sirve para generar variables de entorno.
 Vamos a trabajar un entorno local y otro en producción (en un servidor web).
 
-3) EN la carpeta raíz crearemos un archivo llamado variables.env y le agregaremos los nombres de las variables de entorno, seguidas del valor correspondiente:
+3) EN la carpeta raíz crearemos un archivo llamado variables.env y le agregaremos 
+los nombres de las variables de entorno, seguidas del valor correspondiente:
 BD_NOMBRE=agenciaviajes
 BD_USER=root
 BD_PASS=admin
@@ -20,7 +24,8 @@ import sequelize from 'sequelize';
 import dotenv from 'dotenv';
 dotenv.config({path:"variables.env"});
 
-const db = new sequelize(process.env.BD_NOMBRE, process.env.BD_USER, process.env.BD_PASS, {
+const db = new sequelize(process.env.BD_NOMBRE, process.env.BD_USER, 
+process.env.BD_PASS, {
      host: process.env.BD_HOST, // o el ip local
      port: process.env.BD_PORT,
      dialect: 'mysql',
@@ -37,5 +42,6 @@ const db = new sequelize(process.env.BD_NOMBRE, process.env.BD_USER, process.env
 });
 
 export default db;
-Dot env tiene una forma de leer las variables de entorno, mediante el uso de process.env.NOMBREVARIABLEENTORNO.
+Dot env tiene una forma de leer las variables de entorno, mediante el uso de 
+process.env.NOMBREVARIABLEENTORNO.
 Solo reemplazamos los valores correspondientes con las variables de entorno

@@ -1,5 +1,8 @@
 Crearemos un repositorio en Github y lo replicaremos a Heroku
 
-1) Abrimos nuestra cuenta de github, creamos un nuevo repositorio, le colocamos el nombre AgenciaViajesNodeHeroku, luego crear repositorio.
+1) Abrimos nuestra cuenta de github, creamos un nuevo repositorio, le colocamos el 
+nombre AgenciaViajesNodeHeroku, luego crear repositorio.
 
-2) Se clona el repositorio, luego se agrega el proyecto, Se crea el archivo .gitignore, en la anotación 1 de esta carpeta, lo explicamos. Se hace push y está listo.
+2) Se clona el repositorio, luego se agrega el proyecto, Se crea el archivo 
+.gitignore, en la anotación 1 de esta carpeta, lo explicamos. Se hace push y 
+está listo.
